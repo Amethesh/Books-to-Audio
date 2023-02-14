@@ -1,0 +1,5 @@
+node_modules
+.env
+options.json
+*.mp3
+*.mp4
