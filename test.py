@@ -15,9 +15,15 @@ voices = json.loads(response.text)["voices"]
 first_voice = voices[5]
 
 # Convert text into speech using the ID of the voice
-with open("00001.txt", "r") as f:
-    text = f.read()
+# with open("00001.txt", "r") as f:
+#     text = f.read()
 #text = "This is a test for the text-to-speech system by Eleven Labs."
+
+with open("00001.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+    text = ""
+    for line in lines:
+        text += line.rstrip('\n')
 
 response = requests.post(
     f"https://api.elevenlabs.io/v1/text-to-speech/{first_voice['voice_id']}",
