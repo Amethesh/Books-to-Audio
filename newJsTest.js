@@ -26,7 +26,7 @@ https.get(
             //const firstVoice = voices[5];
 
             // Convert text into speech using the ID of the voice
-            const text = fs.readFileSync('Novels/classroom-of-the-elite/00003.txt', 'utf8');
+            const text = fs.readFileSync('filename_1.txt', 'utf8');
             //const text = 'This is a test for the text-to-speech system by Eleven Labs.';
             
             const req = https.request(
