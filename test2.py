@@ -16,7 +16,7 @@ voices = json.loads(response.text)["voices"]
 #first_voice = voices[5]
 
 # Convert text into speech using the ID of the voice
-with open("00001.txt", "r") as f:
+with open("Novels/classroom-of-the-elite/00002.txt", "r") as f:
     text = f.read()
 #text = "This is a test for the text-to-speech system by Eleven Labs."
 
@@ -31,5 +31,5 @@ response = requests.post(
 )
 
 # Write the audio to disk, response.content contains it as bytes
-with open("audio_ours.mp3", "wb") as f:
+with open("chapter2.mp3", "wb") as f:
     f.write(response.content)

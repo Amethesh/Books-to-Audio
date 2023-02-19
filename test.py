@@ -13,13 +13,14 @@ response = requests.get(
 )
 voices = json.loads(response.text)["voices"]
 first_voice = voices[5]
+#voiceId = "V9hVOl0xjZYL2dpUEGUT"
 
 # Convert text into speech using the ID of the voice
 # with open("00001.txt", "r") as f:
 #     text = f.read()
 #text = "This is a test for the text-to-speech system by Eleven Labs."
 
-with open("00001.txt", "r", encoding="utf-8") as f:
+with open("./Novels/classroom-of-the-elite/00002.txt", "r", encoding="utf-8") as f:
     lines = f.readlines()
     text = ""
     for line in lines:
@@ -36,5 +37,5 @@ response = requests.post(
 )
 
 # Write the audio to disk, response.content contains it as bytes
-with open("overlord-001.mp3", "wb") as f:
+with open("chapter2.mp3", "wb") as f:
     f.write(response.content)
