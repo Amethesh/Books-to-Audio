@@ -27,7 +27,7 @@ const fileSpilt = async (txt) =>{
     try{
         const data = await fsPromises.readFile(path.join(__dirname, "Novels", "classroom-of-the-elite", txt ), "utf-8");
         await makeFile();
-                
+        setTimeout()        
         for (let i = 0; i < data.length; i += chunkSize){
             const chunk = data.slice(i, i + chunkSize)
             
@@ -39,6 +39,6 @@ const fileSpilt = async (txt) =>{
     }
 }
 
-fileSpilt("00002.txt")
+// fileSpilt("00002.txt")
 
 export default fileSpilt

@@ -1,4 +1,4 @@
-// import fileSpilt from "./fileSpilter.js";
+import fileSpilt from "./fileSpilter.js";
 import fs from "fs"
 import { promises as fsPromises } from 'fs';
 import path from "path";
@@ -12,7 +12,12 @@ const ReadFile = async () => {
     fs.readdir(fullPath, (error, files) => {
         if (error) console.log(error)
         console.log(`No of files:${files.length}`);
-        files.forEach( file => console.log(file))
+        files.forEach( async file => {
+            console.log(`Converting File:${file}`)
+            await fileSpilt(file)
+            console.log(`Converted File:${file}`)
+
+        })
     })
 }
 
