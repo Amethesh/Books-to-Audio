@@ -4,6 +4,8 @@ import * as dotenv from 'dotenv'
 import path from "path"
 
 dotenv.config()
+const __dirname = path.resolve(); // To resolve error for __dirname in ES6
+
 // Please insert your xi-api-key below
 const xiApiKey = process.env.API_KEY
 const voiceId = "V9hVOl0xjZYL2dpUEGUT";
@@ -41,7 +43,7 @@ https.get(
                     }
                 },
                 response => {
-                    const audioStream = fs.createWriteStream(path.join(__dirname, "Audio", "audioSpilt", `voice-${textLoc}.mp3` ));
+                    const audioStream = fs.createWriteStream(path.join(__dirname, "Audio", "audioSpilt", `voice-${voiceLoc}.mp3` ));
                     response.pipe(audioStream);
                 }
             );
@@ -53,5 +55,6 @@ https.get(
 }
 
 
-tts("spiltText/filename_11.txt","chapter3.mp3")
+//tts("spiltText/filename_11.txt","chapter3.mp3")
 //spiltText\filename_11.txt
+export default tts

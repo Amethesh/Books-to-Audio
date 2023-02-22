@@ -1,6 +1,7 @@
 import fs from "fs";
 import { promises as fsPromises } from 'fs';
 import path from "path";
+import tts from "./tts.js";
 
 const chunkSize = 5000; // Character limit in this case it is 5000
 let fileNum = 1;
@@ -28,14 +29,15 @@ const fileSpilt = async (txt) =>{
         const data = await fsPromises.readFile(path.join(__dirname, "Novels", "classroom-of-the-elite", txt ), "utf-8");
         await makeFile();
 
-        await setTimeout(() => {
-            console.log("Delayed for 2 second.");
-          }, 20000)    //!For testing
+        // setTimeout(() => {
+        //     console.log("Delayed for 2 second.");
+        //   }, 20000)    //!For testing
 
         for (let i = 0; i < data.length; i += chunkSize){
             const chunk = data.slice(i, i + chunkSize)
             
         await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
+        await tts(fileNum,fileNum)
         fileNum++;
         }
     } catch (err){
