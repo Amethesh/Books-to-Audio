@@ -1,15 +1,15 @@
 import https from "https"
 import fs from "fs"
 import * as dotenv from 'dotenv'
+import path from "path"
 
 dotenv.config()
 // Please insert your xi-api-key below
-// const xiApiKey = "1705d1eafb2fdd7eacedfb3b86e2b89d";
 const xiApiKey = process.env.API_KEY
 const voiceId = "V9hVOl0xjZYL2dpUEGUT";
 
 // Fetch your voices
-const tts = () => {
+const tts = (textLoc, voiceLoc) => {
 https.get(
     {
         hostname: 'api.elevenlabs.io',
@@ -24,11 +24,10 @@ https.get(
             data += chunk;
         });
         response.on('end', () => {
-            const voices = JSON.parse(data).voices;
+            //const voices = JSON.parse(data).voices;
             //const firstVoice = voices[5];
-
             // Convert text into speech using the ID of the voice
-            const text = fs.readFileSync('filename_1.txt', 'utf8');
+            const text = fs.readFileSync(path.join(__dirname, "spiltText", `filename_${textLoc}.txt` ), 'utf8');
             //const text = 'This is a test for the text-to-speech system by Eleven Labs.';
             
             const req = https.request(
@@ -42,7 +41,7 @@ https.get(
                     }
                 },
                 response => {
-                    const audioStream = fs.createWriteStream('chapter2.mp3');
+                    const audioStream = fs.createWriteStream(path.join(__dirname, "Audio", "audioSpilt", `voice-${textLoc}.mp3` ));
                     response.pipe(audioStream);
                 }
             );
@@ -52,3 +51,7 @@ https.get(
     }
 );
 }
+
+
+tts("spiltText/filename_11.txt","chapter3.mp3")
+//spiltText\filename_11.txt
