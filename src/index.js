@@ -1,6 +1,6 @@
 //! Function and working of index 
 //?1: Read the chapter files one by one
-//TODO 2: Then it call fileSpilter to spilt the files into 5000 characters and stores it in different files
+//?2: Then it call fileSpilter to spilt the files into 5000 characters and stores it in different files
 //TODO 3: Then ForEach spilted files it calls the tts to convert it into mp3
 //TODO 4: lastly it calls mp3Merger to merge all the mp3 files 
 //TODO 5: Finally each characters it will create a Audio/mp3 file 
@@ -20,7 +20,7 @@ const ReadFile = async () => {
         if (error) console.log(error)
 
         console.log(`No of files:${files.length}`);
-        
+
         files.forEach( async file => {
             console.log(`Converting File:${file}`)
             await fileSpilt(file)
