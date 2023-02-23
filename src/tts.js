@@ -11,7 +11,7 @@ const xiApiKey = process.env.API_KEY
 const voiceId = "V9hVOl0xjZYL2dpUEGUT";
 
 // Fetch your voices
-const tts = (textLoc, voiceLoc) => {
+const tts = async (textLoc, voiceLoc) => {
 https.get(
     {
         hostname: 'api.elevenlabs.io',
