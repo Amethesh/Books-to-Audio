@@ -38,4 +38,4 @@ function joinMP3(inputFile1, inputFile2, outputFile) {
 }
 
 // Example usage: join two MP3 files into one
-joinMP3('chapter1.mp3', 'chapter2.mp3', 'output1.mp3');
+joinMP3('Audio/audioSpilt/voice-1.mp3', 'Audio/audioSpilt/voice-2.mp3', 'Audio/finalOutput/chapter-1.mp3');

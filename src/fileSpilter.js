@@ -4,9 +4,9 @@ import path from "path";
 import tts from "./tts.js";
 import faketts from "./faketts.js"; 
 
-const chunkSize = 5000; // Character limit in this case it is 5000
+const chunkSize = 1000; // Character limit in this case it is 5000
 let fileNum = 1;
-
+ 
 //! Using Promises
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
@@ -37,8 +37,8 @@ const fileSpilt = async (txt) =>{
         for (let i = 0; i < data.length; i += chunkSize){
         const chunk = data.slice(i, i + chunkSize)            
         await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
-        //TODO await tts(fileNum,fileNum)
-        await faketts(fileNum,fileNum);
+        await tts(fileNum,fileNum)
+        //await faketts(fileNum,fileNum);
         fileNum++;
         }
     } catch (err){
@@ -46,6 +46,6 @@ const fileSpilt = async (txt) =>{
     }
 }
 
-// fileSpilt("00003.txt")
+fileSpilt("00001.txt")
 
 export default fileSpilt

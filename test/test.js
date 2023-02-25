@@ -18,9 +18,6 @@ request(options, function (error, response) {
 		_voice = json_obj.voices[voice];
 		if(_voice.category === 'custom')
 			console.log('voice name: ' + _voice.name + ', voice ID: ' + _voice.voice_id);
-			console.log('voice name: ' + _voice.name + ', voice ID: ' + _voice.voice_id);
-			console.log('voice name: ' + _voice.name + ', voice ID: ' + _voice.voice_id);
-			console.log('voice name: ' + _voice.name + ', voice ID: ' + _voice.voice_id);
-			console.log('voice name: ' + _voice.name + ', voice ID: ' + _voice.voice_id);
+			
 	}
 });

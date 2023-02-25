@@ -13,7 +13,6 @@ import path from "path";
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
 const fullPath = path.join(__dirname, "Novels", "classroom-of-the-elite")
-const outPath = path.join(__dirname, "Audio", "finalOutput")
 
 const ReadFile = async () => {
     
