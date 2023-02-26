@@ -5,7 +5,7 @@ import fs from "fs";
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 const dir = path.join(__dirname,"Audio","audioSpilt")
 
-function joinMP3(audio1, audio2, outputFile) {
+export default function joinMP3(audio1, audio2, outputFile) {
   // Use ffmpeg to concatenate the two input files into one output file
 
   const audioPath1 = path.join(__dirname, "Audio", "audioSpilt", `voice-${audio1}.mp3`);
@@ -37,30 +37,6 @@ function joinMP3(audio1, audio2, outputFile) {
 }
 
 
-function getNumberOfFilesInDirectory(dirPath) {
-  try {
-    const files = fs.readdirSync(dirPath);
-    return files.length;
-  } catch (err) {
-    console.error(`Error reading directory: ${err}`);
-    return 0;
-  }
-}
-
-
-function iterationJoin(){
-  
-  const numFiles = getNumberOfFilesInDirectory(dir);
-  console.log(`Number of files in directory: ${numFiles}`);
-  let count = 1
-  for(let i = 1; i<numFiles; i++){
-    console.log(`Joining voice-${i} and voice-${++i} copying to chapter-${count}`)
-    // joinMP3()
-    count++
-  }
-}
-
-iterationJoin()
 
 // Example usage: join two MP3 files into one
 // joinMP3(1, 2, 1);
