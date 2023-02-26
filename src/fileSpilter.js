@@ -5,7 +5,7 @@ import tts from "./tts.js";
 import faketts from "./faketts.js"; 
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 500; // Character limit in this case it is 5000
+const chunkSize = 100; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
@@ -34,7 +34,7 @@ const fileSpilt = async (txt) =>{
         let lastSpaceIndex = -1;
         for (let i = 0; i < data.length; i++) {
             //To cut the file only if its ends with \n and has less than 5000 characters
-            if (i - lastSpaceIndex > chunkSize && (data[i] === ' ' || data[i] === '.' || data[i] === '\n')) {
+            if (i - lastSpaceIndex > chunkSize && (/*data[i] === ' ' || data[i] === '.' || */data[i] === '\n')) {
                 // console.log(`i value: ${i}  ---  lastSpaceIndex value: ${lastSpaceIndex}`)
                 const chunk = data.slice(lastSpaceIndex + 1, i);
                 // console.log(chunk.length)
@@ -62,7 +62,7 @@ const fileSpilt = async (txt) =>{
 }
 
 
-// await fileSpilt("00003.txt")
+//await fileSpilt("00004.txt")
 // await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt

@@ -12,7 +12,7 @@ async function joinMP3(inputFiles, outputFile) {
   });
 
   // Joining files like this "file1.mp3|file2.mp3|file3.mp3"
-  const command = `ffmpeg -i "concat:${inputFilePaths.join("|")}" -c copy ${outputFile}.mp3`; 
+  const command = `ffmpeg -i "concat:${inputFilePaths.join("|")}" -c copy ${outputFile}`; 
 
   // Execute the ffmpeg command
   exec(command, (err, stdout, stderr) => {
@@ -42,7 +42,7 @@ async function getAllMP3FilesInDirectory(dirPath) {
 async function joinAllMP3FilesInDirectory(chapterNo) {
   try {
     const mp3Files = await getAllMP3FilesInDirectory(dir);
-    const outputFile = path.join(__dirname,"Audio","finalOutput",`chapter-${chapterNo}`);
+    const outputFile = path.join(__dirname,"Audio","finalOutput",`chapter-${chapterNo}.mp3`);
     await joinMP3(mp3Files, outputFile);
   } catch (err) {
     console.error(`Error joining all MP3 files in directory: ${err}`);

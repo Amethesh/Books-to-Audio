@@ -14,26 +14,46 @@ import joinAllMP3FilesInDirectory from "./joinMP3.js";
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
 const fullPath = path.join(__dirname, "Novels", "classroom-of-the-elite")
+const directoryPath = path.join(__dirname, "spiltText");
+const directoryPath1 = path.join(__dirname, "Audio", "audioSpilt");
 
 const ReadFile = async () => {
-    
-    fs.readdir(fullPath, async (error, files) => {
-        if (error) console.log(error)
-
+    try {
+        const files = await fsPromises.readdir(fullPath);
         console.log(`No of files:${files.length}`);
-        let file = "00003.txt"
-        let chapterCount =  1
-        // files.forEach( async file => {
+        const file = "00004.txt"
+        //let chapterCount = 1;
+        // for (const file of files) {
             console.log(`Converting File:${file}......`)
-            await fileSpilt(file)
-            console.log(`Converted File:${file}. Now joining mp3 files`)
-            // await joinAllMP3FilesInDirectory(chapterCount)
-            console.log(`Sucessfully created chapter-${chapterCount}.mp3`)
-            chapterCount++;
-        // })
-    })
+            await fileSpilt(file);
+            console.log(`Converted File:${file}. Now joining mp3 files`) 
 
+            let VoiceCount
+            
+            console.log("After await call")
+            fs.readdir(directoryPath, function (err, files) {
+                VoiceCount = files.length
+                console.log(VoiceCount)
+                console.log("Inside fs1")
+            })
+            let audioCount = 0
+            while(audioCount != VoiceCount){
+                console.log("Inside while")
+                fs.readdir(directoryPath1, function (err, files) {
+                    audioCount = files.length                  
+                });
+            }
+            if(audioCount == VoiceCount)    {
+                console.log(`Number of files in directory: ${files.length}`);
+                joinAllMP3FilesInDirectory(chapterCount)
+                console.log(`Sucessfully created chapter-${chapterCount}.mp3`)
+            }       
+            //chapterCount++;
 
+        // }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-ReadFile()
+ReadFile();

@@ -10,6 +10,7 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 const xiApiKey = process.env.API_KEY
 const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
+// let count = 1
 // Fetch your voices
 const tts = async (textLoc, voiceLoc) => {
 https.get(
