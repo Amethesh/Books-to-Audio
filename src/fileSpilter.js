@@ -3,8 +3,9 @@ import { promises as fsPromises } from 'fs';
 import path from "path";
 import tts from "./tts.js";
 import faketts from "./faketts.js"; 
+import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 5000; // Character limit in this case it is 5000
+const chunkSize = 500; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
@@ -28,25 +29,40 @@ const makeFile = async () => { //Function to create or delete existing spilt tex
 const fileSpilt = async (txt) =>{
     try{
         const data = await fsPromises.readFile(path.join(__dirname, "Novels", "classroom-of-the-elite", txt ), "utf-8");
-        await makeFile();
+        await makeFile();      
 
-        // setTimeout(() => {
-        //     console.log("Delayed for 2 second.");
-        //   }, 20000)    //!For testing
-
-        for (let i = 0; i < data.length; i += chunkSize){
-        const chunk = data.slice(i, i + chunkSize)            
-        await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
-        await tts(fileNum,fileNum)
-        console.log(fileNum)
-        //await faketts(fileNum,fileNum);
-        fileNum++;
+        let lastSpaceIndex = -1;
+        for (let i = 0; i < data.length; i++) {
+            //To cut the file only if its ends with \n and has less than 5000 characters
+            if (i - lastSpaceIndex > chunkSize && (data[i] === ' ' || data[i] === '.' || data[i] === '\n')) {
+                // console.log(`i value: ${i}  ---  lastSpaceIndex value: ${lastSpaceIndex}`)
+                const chunk = data.slice(lastSpaceIndex + 1, i);
+                // console.log(chunk.length)
+                await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
+                await tts(fileNum,fileNum)
+                console.log(fileNum)
+                //await faketts(fileNum,fileNum);
+                fileNum++;
+                lastSpaceIndex = i;
+            }
         }
+
+        if (lastSpaceIndex !== data.length - 1) {
+            const chunk = data.slice(lastSpaceIndex + 1, data.length);
+            await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
+            await tts(fileNum,fileNum)
+            console.log(fileNum)
+            //await faketts(fileNum,fileNum);
+            fileNum++;
+        }
+
     } catch (err){
         console.log(err);
     }
 }
 
-fileSpilt("00002.txt")
+
+// await fileSpilt("00003.txt")
+// await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt

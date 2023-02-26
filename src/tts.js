@@ -8,7 +8,7 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
 // Please insert your xi-api-key below
 const xiApiKey = process.env.API_KEY
-const voiceId = "V9hVOl0xjZYL2dpUEGUT";
+const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
 // Fetch your voices
 const tts = async (textLoc, voiceLoc) => {

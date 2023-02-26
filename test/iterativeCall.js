@@ -9,7 +9,8 @@ function iterationJoin(){
     
     const numFiles = getNumberOfFilesInDirectory(dir);
     console.log(`Number of files in directory: ${numFiles}`);
-  
+
+    //For creating new mp3 file if there is a odd no of files in the directory
     if (numFiles%2 != 0){
       console.log("There is a odd number of files adding a silent .mp3")
   
