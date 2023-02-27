@@ -30,25 +30,25 @@ const ReadFile = async () => {
 
             let VoiceCount
             
-            console.log("After await call")
-            fs.readdir(directoryPath, function (err, files) {
-                VoiceCount = files.length
-                console.log(VoiceCount)
-                console.log("Inside fs1")
-            })
-            let audioCount = 0
-            while(audioCount != VoiceCount){
-                console.log("Inside while")
-                fs.readdir(directoryPath1, function (err, files) {
-                    audioCount = files.length                  
-                });
-            }
-            if(audioCount == VoiceCount)    {
-                console.log(`Number of files in directory: ${files.length}`);
-                joinAllMP3FilesInDirectory(chapterCount)
-                console.log(`Sucessfully created chapter-${chapterCount}.mp3`)
-            }       
-            //chapterCount++;
+            // console.log("After await call")
+            // fs.readdir(directoryPath, function (err, files) {
+            //     VoiceCount = files.length
+            //     console.log(VoiceCount)
+            //     console.log("Inside fs1")
+            // })
+            // let audioCount = 0
+            // while(audioCount == VoiceCount){
+            //     console.log("Inside while")
+            //     fs.readdir(directoryPath1, function (err, files) {
+            //         audioCount = files.length                  
+            //     });
+            // }
+            // if(audioCount == VoiceCount)    {
+            //     console.log(`Number of files in directory: ${files.length}`);
+            //     joinAllMP3FilesInDirectory(chapterCount)
+            //     console.log(`Sucessfully created chapter-${chapterCount}.mp3`)
+            // }       
+            // //chapterCount++;
 
         // }
     } catch (error) {
