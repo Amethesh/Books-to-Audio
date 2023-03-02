@@ -28,7 +28,7 @@ const ReadFile = async () => {
             await fileSpilt(file);
             console.log(`Converted File:${file}. Now joining mp3 files`) 
 
-            let VoiceCount
+            //let VoiceCount
             
             // console.log("After await call")
             // fs.readdir(directoryPath, function (err, files) {
