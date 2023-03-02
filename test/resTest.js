@@ -2,7 +2,7 @@ import https from "https"
 import fs from "fs"
 import * as dotenv from 'dotenv'
 import path from "path"
-//import apiStatus from "./apiStatus.js"
+import apiStatus from "./apiStatus.js"
 
 dotenv.config()
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
@@ -11,9 +11,9 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 const xiApiKey = process.env.API_KEY
 const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
-const apiStatus = () => {
-  console.log("API call successful");
-}
+// const apiStatus = () => {
+//   console.log("API call successful");
+// }
 
 const tts = async (textLoc, voiceLoc) => {
   https.get(

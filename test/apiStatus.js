@@ -1,5 +1,5 @@
 
 
 export default function apiStatus (){
-    console.log("Sucessfully Called");
+    console.log("Sucessfully Called API");
 }

@@ -2,6 +2,7 @@ import https from "https"
 import fs from "fs"
 import * as dotenv from 'dotenv'
 import path from "path"
+import apiStatus from "./apiStatus.js"
 
 dotenv.config()
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
@@ -10,52 +11,57 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 const xiApiKey = process.env.API_KEY
 const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
-// let count = 1
-// Fetch your voices
+// const apiStatus = () => {
+//   console.log("API call successful");
+// }
+
 const tts = async (textLoc, voiceLoc) => {
-https.get(
+  https.get(
     {
-        hostname: 'api.elevenlabs.io',
-        path: '/v1/voices',
-        headers: {
-            'xi-api-key': xiApiKey
-        }
+      hostname: 'api.elevenlabs.io',
+      path: '/v1/voices',
+      headers: {
+        'xi-api-key': xiApiKey
+      }
     },
     response => {
-        let data = '';
-        response.on('data', chunk => {
-            data += chunk;
+      let data = '';
+      response.on('data', chunk => {
+        data += chunk;
+      });
+      response.on('end', () => {
+        const text = fs.readFileSync(path.join(__dirname, "spiltText", `filename_${textLoc}.txt` ), 'utf8');
+
+        const req = https.request(
+          {
+            hostname: 'api.elevenlabs.io',
+            path: `/v1/text-to-speech/${voiceId}`,
+            method: 'POST',
+            headers: {
+              'xi-api-key': xiApiKey,
+              'Content-Type': 'application/json'
+            }
+          },
+          response => {
+            const audioStream = fs.createWriteStream(path.join(__dirname, "Audio", "audioSpilt", `voice-${voiceLoc}.mp3` ));
+            response.pipe(audioStream);
+          }
+        );
+
+        req.on('response', res => {
+          if (res.statusCode === 200) {
+            apiStatus();
+          }
         });
-        response.on('end', () => {
-            //const voices = JSON.parse(data).voices;
-            //const firstVoice = voices[5];
-            // Convert text into speech using the ID of the voice
-            const text = fs.readFileSync(path.join(__dirname, "spiltText", `filename_${textLoc}.txt` ), 'utf8');
-            //const text = 'This is a test for the text-to-speech system by Eleven Labs.';
-            
-            const req = https.request(
-                {
-                    hostname: 'api.elevenlabs.io',
-                    path: `/v1/text-to-speech/${voiceId}`,
-                    method: 'POST',
-                    headers: {
-                        'xi-api-key': xiApiKey,
-                        'Content-Type': 'application/json'
-                    }
-                },
-                response => {
-                    const audioStream = fs.createWriteStream(path.join(__dirname, "Audio", "audioSpilt", `voice-${voiceLoc}.mp3` ));
-                    response.pipe(audioStream);
-                }
-            );
-            req.write(JSON.stringify({ text }));
-            req.end();
-        });
+
+        req.write(JSON.stringify({ text }));
+        req.end();
+      });
     }
-);
+  );
 }
 
+// Call the tts function with appropriate parameters
+tts(1,1)
 
-//tts("spiltText/filename_11.txt","chapter3.mp3")
-//spiltText\filename_11.txt
 export default tts
