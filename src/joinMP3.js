@@ -5,7 +5,7 @@ import { exec } from "child_process";
 const __dirname = path.resolve();
 const dir = path.join(__dirname, "Audio", "audioSpilt");
 
-async function joinMP3(inputFiles, outputFile) {
+async function joinMP3(inputFiles, outputFile, callback) {
   // Use ffmpeg to concatenate the input files into one output file
   const inputFilePaths = inputFiles.map((filename) => {
     return path.join(dir, filename);
@@ -22,6 +22,7 @@ async function joinMP3(inputFiles, outputFile) {
     }
     console.log(`Successfully joined MP3 files. Output file: ${outputFile}.mp3`);
   });
+  callback()
 }
 
 async function getAllMP3FilesInDirectory(dirPath) {

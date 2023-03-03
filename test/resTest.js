@@ -2,7 +2,7 @@ import https from "https"
 import fs from "fs"
 import * as dotenv from 'dotenv'
 import path from "path"
-import apiStatus from "./apiStatus.js"
+import apiStatus from "../src/apiStatus.js"
 
 dotenv.config()
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6

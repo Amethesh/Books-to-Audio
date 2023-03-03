@@ -10,6 +10,7 @@ import { promises as fsPromises } from 'fs';
 import path from "path";
 import fileSpilt from "./fileSpilter.js";
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
+import apiStatus from "./apiStatus.js";
 
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
@@ -28,14 +29,17 @@ const ReadFile = async () => {
             await fileSpilt(file);
             console.log(`Converted File:${file}. Now joining mp3 files`) 
 
-            //let VoiceCount
+            let VoiceCount
             
-            // console.log("After await call")
-            // fs.readdir(directoryPath, function (err, files) {
-            //     VoiceCount = files.length
-            //     console.log(VoiceCount)
-            //     console.log("Inside fs1")
-            // })
+            console.log("After await fileSpilt call")
+            fs.readdir(directoryPath, function (err, files) {
+                VoiceCount = files.length
+                console.log(VoiceCount)
+                console.log("Inside fs1")
+            })
+
+            const audioCount = apiStatus();
+            console.log(`No of converted audio: ${audioCount}`)
             // let audioCount = 0
             // while(audioCount == VoiceCount){
             //     console.log("Inside while")
