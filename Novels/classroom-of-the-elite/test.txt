@@ -9,4 +9,5 @@ Compared to other DMMO-RPGs of the time, YGGDRASIL’s selling point was “play
 It had over two thousand basic and advanced job classes.
 —Still, all these were things of the past now.
 
-♦ ♦ ♦
+Finally this file is executed therefore all the files is merged and status Sucessfully
+

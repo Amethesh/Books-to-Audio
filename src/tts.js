@@ -2,7 +2,9 @@ import https from "https"
 import fs from "fs"
 import * as dotenv from 'dotenv'
 import path from "path"
-import apiStatus from "./apiStatus.js"
+import apiStatus from "../src/apiStatus.js"
+import joinAllMP3FilesInDirectory from "../src/joinMP3.js"
+import fileCounter from "./fileCounter.js"
 
 dotenv.config()
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
@@ -11,9 +13,8 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 const xiApiKey = process.env.API_KEY
 const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
-// const apiStatus = () => {
-//   console.log("API call successful");
-// }
+let voiceCount = 0
+// let fileCount = 0
 
 const tts = async (textLoc, voiceLoc) => {
   https.get(
@@ -48,9 +49,16 @@ const tts = async (textLoc, voiceLoc) => {
           }
         );
 
-        req.on('response', res => {
+        req.on('response', async res => {
           if (res.statusCode === 200) {
-            apiStatus();
+            voiceCount = apiStatus();
+            const fileCount = await fileCounter();
+            console.log(`fileCount = ${fileCount}, voiceCount = ${voiceCount}`);
+            console.log(`API called for ${voiceCount} times...`);
+            if (fileCount == voiceCount){
+              joinAllMP3FilesInDirectory(1)
+              console.log(`Called joinAllMP3FilesInDirectory()`);
+            }
           }
         });
 
@@ -62,6 +70,5 @@ const tts = async (textLoc, voiceLoc) => {
 }
 
 // Call the tts function with appropriate parameters
-tts(1,1)
-
+// tts(1,1)
 export default tts

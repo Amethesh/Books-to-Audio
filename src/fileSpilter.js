@@ -62,7 +62,7 @@ const fileSpilt = async (txt) =>{
 }
 
 
-//await fileSpilt("00004.txt")
+await fileSpilt("test.txt")
 // await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt
