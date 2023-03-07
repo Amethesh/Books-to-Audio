@@ -2,8 +2,8 @@
 //?1: Read the chapter files one by one
 //?2: Then it call fileSpilter to spilt the files into 5000 characters and stores it in different files
 //?3: Then ForEach spilted files it calls the tts to convert it into mp3
-//?4: lastly it calls mp3Merger to merge all the mp3 files 
-//?5: Finally each characters it will create a Audio/mp3 file 
+//4: lastly it calls mp3Merger to merge all the mp3 files 
+//5: Finally each charapter it will have a Audio/mp3 file 
 
 import fs from "fs"
 import { promises as fsPromises } from 'fs';
@@ -37,9 +37,9 @@ const ReadFile = async () => {
                 console.log(VoiceCount)
                 console.log("Inside fs1")
             })
-
-            const audioCount = apiStatus();
-            console.log(`No of converted audio: ${audioCount}`)
+ 
+            //!const audioCount = apiStatus(); //Calling it might change the count value
+            // console.log(`No of converted audio: ${audioCount}`)
             // let audioCount = 0
             // while(audioCount == VoiceCount){
             //     console.log("Inside while")
