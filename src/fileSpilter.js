@@ -5,7 +5,7 @@ import tts from "./tts.js";
 import faketts from "./faketts.js"; 
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 100; // Character limit in this case it is 5000
+const chunkSize = 4900; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
@@ -28,7 +28,7 @@ const makeFile = async () => { //Function to create or delete existing spilt tex
 
 const fileSpilt = async (txt) =>{
     try{
-        const data = await fsPromises.readFile(path.join(__dirname, "Novels", "classroom-of-the-elite", txt ), "utf-8");
+        const data = await fsPromises.readFile(path.join(__dirname, "Novels", txt ), "utf-8");
         await makeFile();      
 
         let lastSpaceIndex = -1;
@@ -62,7 +62,7 @@ const fileSpilt = async (txt) =>{
 }
 
 
-await fileSpilt("test.txt")
+await fileSpilt("Who-Moved-My-Cheese1.txt")
 // await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt

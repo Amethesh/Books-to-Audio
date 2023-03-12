@@ -14,7 +14,7 @@ import apiStatus from "./apiStatus.js";
 
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
-const fullPath = path.join(__dirname, "Novels", "classroom-of-the-elite")
+const fullPath = path.join(__dirname, "Novels")
 const directoryPath = path.join(__dirname, "spiltText");
 const directoryPath1 = path.join(__dirname, "Audio", "audioSpilt");
 
@@ -22,7 +22,7 @@ const ReadFile = async () => {
     try {
         const files = await fsPromises.readdir(fullPath);
         console.log(`No of files:${files.length}`);
-        const file = "00004.txt"
+        const file = "Who-Moved-My-Cheese1.txt"
         //let chapterCount = 1;
         // for (const file of files) {
             console.log(`Converting File:${file}......`)
