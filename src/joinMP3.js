@@ -50,6 +50,6 @@ async function joinAllMP3FilesInDirectory(chapterNo) {
   }
 }
 
-// joinAllMP3FilesInDirectory(1);
+joinAllMP3FilesInDirectory(2);
 
 export default joinAllMP3FilesInDirectory

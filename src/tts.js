@@ -11,7 +11,7 @@ const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
 // Please insert your xi-api-key below
 const xiApiKey = process.env.API_KEY
-const voiceId = "21m00Tcm4TlvDq8ikWAM";
+const voiceId = "ErXwobaYiN019PkySvjV";
 
 let voiceCount = 0
 // let fileCount = 0
@@ -56,7 +56,7 @@ const tts = async (textLoc, voiceLoc) => {
             console.log(`fileCount = ${fileCount}, voiceCount = ${voiceCount}`);
             console.log(`API called for ${voiceCount} times...`);
             if (fileCount == voiceCount){
-              joinAllMP3FilesInDirectory(1)
+              joinAllMP3FilesInDirectory(2)
               console.log(`Called joinAllMP3FilesInDirectory()`);
             }
           }
