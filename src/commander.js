@@ -6,9 +6,11 @@ import figlet from "figlet";
 import { createSpinner } from "nanospinner";
 import readline from "readline";
 import Table from "cli-table3";
+import fs from "fs";
 
-const sleep = (ms = 2000) => new Promise((r) => setTimeout(r,ms)) //For waiting
+const sleep = (ms = 2000) => new Promise((r) => setTimeout(r,ms)) //Function for waiting for few seconds
 
+//To display big starting text(Books to Audio)
 function start() {
   console.clear();
   const msg = "Books to Audio";
@@ -20,6 +22,7 @@ function start() {
   });
 }
 
+//Starting instructions
 function instructions() {
   console.log(`
   ${chalk.bold.red("Requirements:")}  
@@ -34,6 +37,7 @@ So make sure your .txt file is correct and with proper spacing and newline(i.e,E
   `);
 }
 
+//Press Enter to continue: Function
 function promptToContinue() {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -47,6 +51,7 @@ function promptToContinue() {
   });
 }
 
+//Getting 1.input_path 2.output_path 3.API_KEY
 function filePaths() {
   const questions = [
     {
@@ -76,12 +81,14 @@ function filePaths() {
   ];
 
   inquirer.prompt(questions).then((answers) => {
+    // const jsonData = JSON.stringify(answers);
     // console.log(JSON.stringify(answers, null, "  "));
-    voiceId();
+    voiceId(answers);
   });
 }
 
-function voiceId() {
+//Displaying defaults voiceids and Getting it
+function voiceId(firstAnswers) {
   let table = new Table({
     head: ["Name", "Voice_Id", "Gender"],
     style: {
@@ -116,12 +123,20 @@ function voiceId() {
   console.log(`${table.toString()}`);
   console.log(chalk.red(`Custom voices not included`));
   inquirer.prompt(question).then((answers) => {
-    // console.log(JSON.stringify(answers, null, "  "));
-    // voiceId();
-    converWait()
+
+    const newAnswers = Object.assign({},firstAnswers,answers);
+    const jsonData = JSON.stringify(newAnswers);
+    // console.log(JSON.stringify(newAnswers, null, "  "));
+
+    fs.writeFile("./json/data.json", jsonData, (err) => {
+      if (err) throw err;
+      console.log("Data saved to JSON file.");
+      converWait();     
+    });
   });
 }
 
+//Loading screen 
 async function converWait(){
   console.log(chalk.bold.magenta(`
   This might take several minutes..`))
@@ -131,6 +146,7 @@ async function converWait(){
   success()
 }
 
+//Big ending text
 function success(){
   const msg = "Converted sucessfully";
 
@@ -140,6 +156,7 @@ function success(){
   });
 }
 
+//To delete temporary files created
 function deleteTemp() {
 
   inquirer
