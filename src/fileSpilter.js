@@ -2,7 +2,6 @@ import fs from "fs";
 import { promises as fsPromises } from 'fs';
 import path from "path";
 import tts from "./tts.js";
-import faketts from "./faketts.js"; 
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
 const chunkSize = 4900; // Character limit in this case it is 5000
@@ -26,9 +25,9 @@ const makeFile = async () => { //Function to create or delete existing spilt tex
     
 }
 
-const fileSpilt = async (txt) =>{
+const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
     try{
-        const data = await fsPromises.readFile(path.join(__dirname, "Novels", txt ), "utf-8");
+        const data = await fsPromises.readFile(input_path, "utf-8");
         await makeFile();      
 
         let lastSpaceIndex = -1;
@@ -39,7 +38,7 @@ const fileSpilt = async (txt) =>{
                 const chunk = data.slice(lastSpaceIndex + 1, i);
                 // console.log(chunk.length)
                 await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
-                await tts(fileNum,fileNum)
+                await tts(fileNum,fileNum,output_path,API_KEY,voice_id)
                 console.log(fileNum)
                 //await faketts(fileNum,fileNum);
                 fileNum++;
@@ -50,7 +49,7 @@ const fileSpilt = async (txt) =>{
         if (lastSpaceIndex !== data.length - 1) {
             const chunk = data.slice(lastSpaceIndex + 1, data.length);
             await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
-            await tts(fileNum,fileNum)
+            await tts(fileNum,fileNum,output_path,API_KEY,voice_id)
             console.log(fileNum)
             //await faketts(fileNum,fileNum);
             fileNum++;
@@ -62,7 +61,7 @@ const fileSpilt = async (txt) =>{
 }
 
 
-await fileSpilt("Who-Moved-My-Cheese2.txt")
+// await fileSpilt("Who-Moved-My-Cheese2.txt")
 // await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt

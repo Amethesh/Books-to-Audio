@@ -16,13 +16,13 @@ const voiceId = "ErXwobaYiN019PkySvjV";
 let voiceCount = 0
 // let fileCount = 0
 
-const tts = async (textLoc, voiceLoc) => {
+const tts = async (textLoc, voiceLoc,output_path,API_KEY,voice_id) => {
   https.get(
     {
       hostname: 'api.elevenlabs.io',
       path: '/v1/voices',
       headers: {
-        'xi-api-key': xiApiKey
+        'xi-api-key': API_KEY
       }
     },
     response => {
@@ -36,10 +36,10 @@ const tts = async (textLoc, voiceLoc) => {
         const req = https.request(
           {
             hostname: 'api.elevenlabs.io',
-            path: `/v1/text-to-speech/${voiceId}`,
+            path: `/v1/text-to-speech/${voice_id}`,
             method: 'POST',
             headers: {
-              'xi-api-key': xiApiKey,
+              'xi-api-key': API_KEY,
               'Content-Type': 'application/json'
             }
           },
@@ -56,7 +56,7 @@ const tts = async (textLoc, voiceLoc) => {
             console.log(`fileCount = ${fileCount}, voiceCount = ${voiceCount}`);
             console.log(`API called for ${voiceCount} times...`);
             if (fileCount == voiceCount){
-              joinAllMP3FilesInDirectory(2)
+              joinAllMP3FilesInDirectory(output_path)
               console.log(`Called joinAllMP3FilesInDirectory()`);
             }
           }

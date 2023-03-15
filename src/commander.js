@@ -7,6 +7,7 @@ import { createSpinner } from "nanospinner";
 import readline from "readline";
 import Table from "cli-table3";
 import fs from "fs";
+import fileSpilt from "./fileSpilter.js";
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r,ms)) //Function for waiting for few seconds
 
@@ -136,24 +137,35 @@ function voiceId(firstAnswers) {
   });
 }
 
+let spinner
 //Loading screen 
 async function converWait(){
   console.log(chalk.bold.magenta(`
   This might take several minutes..`))
-  const spinner = createSpinner("Converting...").start();
-  await sleep()
-  spinner.success({text: `Audio created in ouput directory`})
-  success()
+  spinner = createSpinner("Converting...").start();
+
+  fs.readFile('./json/data.json', 'utf8', async (err, data) => {
+    if (err) throw err;
+    const key = JSON.parse(data);
+    // console.log(key);
+    
+    //!Calling for converation
+    console.log(key.input_path)
+    await fileSpilt(key.input_path,key.output_path,key.API_KEY,key.voice_id)
+  });
+  // await sleep()
 }
 
 //Big ending text
-function success(){
+export async function success(){
   const msg = "Converted sucessfully";
-
+  spinner.success({text: `Audio created in ouput directory`})
+  
   figlet(msg, (err, data) => {
     console.log(gradient.retro.multiline(data));
-    deleteTemp()
+    //deleteTemp()
   });
+
 }
 
 //To delete temporary files created
