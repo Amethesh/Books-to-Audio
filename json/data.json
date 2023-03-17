@@ -1,1 +1,1 @@
-{"input_path":"./Novels/test.txt","output_path":"./Audio/output.mp3","API_KEY":"5b55c001f2b6c48f60f6a8a1f2b1f93c","voice_id":"ErXwobaYiN019PkySvjV"}
+{"input_path":"./Novels/test.txt","output_path":"./Audio/output.mp3","API_KEY":"\u001b[31mAPI_KEY\u001b[39m","voice_id":"ErXwobaYiN019PkySvjV"}

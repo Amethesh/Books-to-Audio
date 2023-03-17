@@ -1,3 +1,4 @@
+//! Index.js is Work In Progress---WIP 
 //! Function and working of index 
 //?1: Read the chapter files one by one
 //?2: Then it call fileSpilter to spilt the files into 5000 characters and stores it in different files

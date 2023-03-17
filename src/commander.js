@@ -26,15 +26,15 @@ function start() {
 //Starting instructions
 function instructions() {
   console.log(`
-  ${chalk.bold.red("Requirements:")}  
-- Your book or file should be in ${chalk.green(".txt")} format
-- Use this tool to convert them: https://www.zamzar.com/convert/epub-to-txt/
-- Your Eleven Labs's ${chalk.green("API Key")}
-- Enough ${chalk.green("chatacters")} left to convert the book 
-- Use this tool to check No of characters in your text file: https://www.charactercountonline.com/
+      ${chalk.bold.red("Requirements:")}  
+    - Your book or file should be in ${chalk.green(".txt")} format
+    - Use this tool to convert them: https://www.zamzar.com/convert/epub-to-txt/
+    - Your Eleven Labs's ${chalk.green("API Key")}
+    - Enough ${chalk.green("chatacters")} left to convert the book 
+    - Use this tool to check No of characters in your text file: https://www.charactercountonline.com/
 
-${chalk.red(`Caution: By running this script you will spend your character usage,
-So make sure your .txt file is correct and with proper spacing and newline(i.e,Enters)`)}
+    ${chalk.red(`Caution: By running this script you will spend your character usage,
+    So make sure your .txt file is correct and with proper spacing and newline(i.e,Enters)`)}
   `);
 }
 
@@ -60,7 +60,7 @@ function filePaths() {
       name: "input_path",
       message: "Enter your .txt file path:",
       default() {
-        return "./Books/FILE_NAME.txt";
+        return "./Novels/test.txt";
       },
     },
     {

@@ -1,3 +1,4 @@
+//! Main starting function
 import fs from "fs";
 import { promises as fsPromises } from 'fs';
 import path from "path";
