@@ -16,56 +16,45 @@
 
 ## Table Of Contents
 
-* [About the Project](#about-the-project)
-* [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Authors](#authors)
-* [Acknowledgements](#acknowledgements)
+- [Table Of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+  - [Run anywhere using](#run-anywhere-using)
+  - [Run locally](#run-locally)
+- [Usage](#usage)
+- [Contributing](#contributing)
+  - [Creating A Pull Request](#creating-a-pull-request)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
+- [Enjoy](#enjoy)
 
 ## About The Project
 
-![Screen Shot](./images/1.png)
+![Screen Shot](./images/1.png)****
 
 Books-to-Audio is a Node.js script that converts text files into audio files using AI text-to-speech using **Eleven Labs API**. This script can be used to listen to your favorite books, articles, or any text-based content while doing other activities such as commuting, working out, or doing household chores.
 
 The script is designed to work with text files in the .txt format.
 
 
-## Built With
+### Built With
 
 - Nodejs
 - Elevens's Lab API
 
-## Getting Started
+### Run anywhere using
 
 ```
 npx books-to-audio
 ```
+### Run locally
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-* npm
-
-```sh
-npm install npm@latest -g
-```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at https://beta.elevenlabs.io/speech-synthesis
 
 2. Clone the repo
 
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/Amethesh/Books-to-Audio.git
 ```
 
 3. Install NPM packages
@@ -74,29 +63,23 @@ git clone https://github.com/your_username_/Project-Name.git
 npm install
 ```
 
-4. Enter your API in `config.js`
+4. Run the commander.js
 
 ```JS
-const API_KEY = 'ENTER YOUR API';
+npm start
 ```
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-## Roadmap
-
-See the [open issues](https://github.com/Amethesh/Books-to-Audio/issues) for a list of proposed features (and known issues).
-
+You can use the CLI to convert any books or large text into audio
+![Screen Shot](./images/1.png)
+![Screen Shot](./images/2.png)
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 * If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Amethesh/Books-to-Audio/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
 * Please make sure you check your spelling and grammar.
 * Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/Amethesh/Books-to-Audio/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
 ### Creating A Pull Request
 
@@ -106,16 +89,14 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
-Distributed under the MIT License. See [LICENSE](https://github.com/Amethesh/Books-to-Audio/blob/main/LICENSE.md) for more information.
-
 ## Authors
 
-* **Shaan Khan** - *Comp Sci Student* - [Shaan Khan](https://github.com/ShaanCoding/) - *Built ReadME Template*
+*  [Amethesh](https://github.com/Amethesh) - *College student*
 
 ## Acknowledgements
 
-* [ShaanCoding](https://github.com/ShaanCoding/)
-* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
-* [ImgShields](https://shields.io/)
+* [Prasanth-BS](https://github.com/Prasanth-BS) - *Fellow college student*
+  
+## Enjoy
+
+![GIF](https://tenor.com/view/darkville-rpg-music-listening-to-music-gif-14887332.gif)
