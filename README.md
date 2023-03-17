@@ -1,58 +1,121 @@
-# Books to Audio
+<br/>
+<p align="center">
+  <h3 align="center">Books to Audio</h3>
 
-Books-to-Audio is a Node.js script that converts text files into audio files using AI text-to-speech using Eleven Labs API. This script can be used to listen to your favorite books, articles, or any text-based content while doing other activities such as commuting, working out, or doing household chores.
+  <p align="center">
+    Why read? when you can Listen
+    <br/>
+    <br/>
+    <a href="https://github.com/Amethesh/Books-to-Audio/issues">Report Bug</a>
+    .
+    <a href="https://github.com/Amethesh/Books-to-Audio/issues">Request Feature</a>
+  </p>
+</p>
+
+![Downloads](https://img.shields.io/github/downloads/Amethesh/Books-to-Audio/total) ![Contributors](https://img.shields.io/github/contributors/Amethesh/Books-to-Audio?color=dark-green) ![Issues](https://img.shields.io/github/issues/Amethesh/Books-to-Audio) ![License](https://img.shields.io/github/license/Amethesh/Books-to-Audio) 
+
+## Table Of Contents
+
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
+
+## About The Project
+
+![Screen Shot](./images/1.png)
+
+Books-to-Audio is a Node.js script that converts text files into audio files using AI text-to-speech using **Eleven Labs API**. This script can be used to listen to your favorite books, articles, or any text-based content while doing other activities such as commuting, working out, or doing household chores.
 
 The script is designed to work with text files in the .txt format.
 
 
-## Run Locally
+## Built With
 
-#### 1. Clone the project
+- Nodejs
+- Elevens's Lab API
 
-```bash
-  git clone https://github.com/Amethesh/Books-to-Audio.git
+## Getting Started
+
+```
+npx books-to-audio
 ```
 
-#### 2. Go to the project directory
+### Prerequisites
 
-```bash
-  cd Books-to-Audio
+This is an example of how to list things you need to use the software and how to install them.
+
+* npm
+
+```sh
+npm install npm@latest -g
 ```
 
-#### 3. Install dependencies
+### Installation
 
-```bash
-  npm install
+1. Get a free API Key at [https://example.com](https://example.com)
+
+2. Clone the repo
+
+```sh
+git clone https://github.com/your_username_/Project-Name.git
 ```
 
-#### 4. Place your text file in the "novels" directory
+3. Install NPM packages
 
-#### 5. Run the index
-
-```bash
-  node ./src/index
+```sh
+npm install
 ```
 
-#### 6. The audio file will be generated in the "audio" directory
-## Environment Variables
+4. Enter your API in `config.js`
 
-To run this project, you will need to add the following environment variables to your .env file
+```JS
+const API_KEY = 'ENTER YOUR API';
+```
 
-`API_KEY`="YOUR_ELEVENLABS_API_KEY"
+## Usage
 
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-## Configuration
-#### The "index.js" file contains the following configuration options:
+_For more examples, please refer to the [Documentation](https://example.com)_
 
-- **language:** The language to use for text-to-speech (default: 'en-US')
-- **voice:** The name of the voice to use for text-to-speech (default: 'en-US-Standard-D')
-- **outputFormat:** The format to use for the audio file (default: 'mp3')
-- **bitrate:** The bitrate to use for the audio file (default: 320000)
+## Roadmap
 
-## Enjoy
+See the [open issues](https://github.com/Amethesh/Books-to-Audio/issues) for a list of proposed features (and known issues).
 
-![Alt Text](https://tenor.com/view/darkville-rpg-music-listening-to-music-gif-14887332.gif)
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Amethesh/Books-to-Audio/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
+* Please make sure you check your spelling and grammar.
+* Create individual PR for each suggestion.
+* Please also read through the [Code Of Conduct](https://github.com/Amethesh/Books-to-Audio/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+
+### Creating A Pull Request
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/Amethesh/Books-to-Audio/blob/main/LICENSE.md) for more information.
+
 ## Authors
 
-- [@Amethesh](https://github.com/Amethesh)
+* **Shaan Khan** - *Comp Sci Student* - [Shaan Khan](https://github.com/ShaanCoding/) - *Built ReadME Template*
 
+## Acknowledgements
+
+* [ShaanCoding](https://github.com/ShaanCoding/)
+* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
+* [ImgShields](https://shields.io/)
