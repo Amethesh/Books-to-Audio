@@ -2,7 +2,7 @@ import requests
 import json
 
 # Please insert your xi-api-key below
-xi_api_key = "1705d1eafb2fdd7eacedfb3b86e2b89d"
+xi_api_key = ""
 
 # Fetch your voices
 response = requests.get(
