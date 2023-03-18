@@ -1,7 +1,7 @@
 {
   "name": "books-to-audio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Books-to-Audio is a Node.js script that converts text files into audio files using AI text-to-speech using Eleven Labs API. ",
   "main": "index.js",
   "type": "module",
   "bin": "./src/commander.js",
