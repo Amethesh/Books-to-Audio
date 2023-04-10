@@ -43,7 +43,15 @@ The script is designed to work with text files in the .txt format.
 - Elevens's Lab API
 
 ### Run anywhere using
-
+- Open terimal in any folder
+```
+cd FOLDER_NAME
+```
+- Create necessery folders
+```
+mkdir spiltText Audio/audioSpilt
+```
+- Run the script
 ```
 npx books-to-audio
 ```
