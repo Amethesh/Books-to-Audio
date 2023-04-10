@@ -69,6 +69,9 @@ const tts = async (textLoc, voiceLoc,output_path,API_KEY,voice_id) => {
   );
 }
 
+// await tts(1,1,"5b55c001f2b6c48f60f6a8a1f2b1f93c","TxGEqnHWrfWFTfGW9XjX")
+
+
 // Call the tts function with appropriate parameters
 // tts(1,1)
 export default tts

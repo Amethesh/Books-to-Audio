@@ -5,7 +5,7 @@ import path from "path";
 import tts from "./tts.js";
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 4900; // Character limit in this case it is 5000
+const chunkSize = 2300; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
@@ -34,7 +34,7 @@ const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
         let lastSpaceIndex = -1;
         for (let i = 0; i < data.length; i++) {
             //To cut the file only if its ends with \n and has less than 5000 characters
-            if (i - lastSpaceIndex > chunkSize && (/*data[i] === ' ' || data[i] === '.' || */data[i] === '\n')) {
+            if (i - lastSpaceIndex > chunkSize && (data[i] === ' ' || data[i] === '.' || data[i] === '\n')) {
                 // console.log(`i value: ${i}  ---  lastSpaceIndex value: ${lastSpaceIndex}`)
                 const chunk = data.slice(lastSpaceIndex + 1, i);
                 // console.log(chunk.length)
@@ -62,7 +62,7 @@ const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
 }
 
 
-// await fileSpilt("Who-Moved-My-Cheese2.txt")
+// await fileSpilt("/Novels/Mushoku_tensei/Prologue.txt","/Audio/Mushoku_tensei/Prologue.mp3","5b55c001f2b6c48f60f6a8a1f2b1f93c","ErXwobaYiN019PkySvjV")
 // await joinAllMP3FilesInDirectory(1)
 
 export default fileSpilt

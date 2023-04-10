@@ -32,6 +32,8 @@ function instructions() {
     - Your Eleven Labs's ${chalk.green("API Key")}
     - Enough ${chalk.green("chatacters")} left to convert the book 
     - Use this tool to check No of characters in your text file: https://www.charactercountonline.com/
+    - Make sure you run this in a separate folder with your text files
+    - Because it is WIP, Make sure you give only relative paths and create a folder named "spiltText" and "Audio/audioSpilt"
 
     ${chalk.red(`Caution: By running this script you will spend your character usage,
     So make sure your .txt file is correct and with proper spacing and newline(i.e,Enters)`)}
