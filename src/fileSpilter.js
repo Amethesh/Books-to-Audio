@@ -5,7 +5,7 @@ import path from "path";
 import tts from "./tts.js";
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 2300; // Character limit in this case it is 5000
+const chunkSize = 4800; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
