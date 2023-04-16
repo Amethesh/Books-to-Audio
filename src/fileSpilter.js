@@ -5,13 +5,13 @@ import path from "path";
 import tts from "./tts.js";
 import joinAllMP3FilesInDirectory from "./joinMP3.js";
 
-const chunkSize = 4800; // Character limit in this case it is 5000
+const chunkSize = 30; // Character limit in this case it is 5000
 let fileNum = 1;
  
 //! Using Promises
 const __dirname = path.resolve(); // To resolve error for __dirname in ES6
 
-const makeFile = async () => { //Function to create or delete existing spilt texts
+const makeFile = async () => { //Function to create or deleted existing spilt texts
             
     if (!fs.existsSync(path.join(__dirname, "spiltText")))
     {
@@ -39,7 +39,7 @@ const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
                 const chunk = data.slice(lastSpaceIndex + 1, i);
                 // console.log(chunk.length)
                 await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
-                await tts(fileNum,fileNum,output_path,API_KEY,voice_id)
+                // await tts(fileNum,fileNum,output_path,API_KEY,voice_id)
                 console.log(fileNum)
                 //await faketts(fileNum,fileNum);
                 fileNum++;
@@ -50,6 +50,7 @@ const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
         if (lastSpaceIndex !== data.length - 1) {
             const chunk = data.slice(lastSpaceIndex + 1, data.length);
             await fsPromises.writeFile(path.join(__dirname, "spiltText", `filename_${fileNum}.txt`), chunk);
+            console.log("Calling tts")
             await tts(fileNum,fileNum,output_path,API_KEY,voice_id)
             console.log(fileNum)
             //await faketts(fileNum,fileNum);
@@ -63,6 +64,6 @@ const fileSpilt = async (input_path,output_path,API_KEY,voice_id) =>{
 
 
 // await fileSpilt("/Novels/Mushoku_tensei/Prologue.txt","/Audio/Mushoku_tensei/Prologue.mp3","5b55c001f2b6c48f60f6a8a1f2b1f93c","ErXwobaYiN019PkySvjV")
-// await joinAllMP3FilesInDirectory(1)
+// await joinAllMP3FilesInDirectory(1) 
 
 export default fileSpilt

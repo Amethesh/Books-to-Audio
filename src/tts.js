@@ -55,6 +55,7 @@ const tts = async (textLoc, voiceLoc,output_path,API_KEY,voice_id) => {
             const fileCount = await fileCounter();
             console.log(`fileCount = ${fileCount}, voiceCount = ${voiceCount}`);
             console.log(`API called for ${voiceCount} times...`);
+            
             if (fileCount == voiceCount){
               joinAllMP3FilesInDirectory(output_path)
               console.log(`Called joinAllMP3FilesInDirectory()`);

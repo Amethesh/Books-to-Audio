@@ -52,6 +52,6 @@ async function joinAllMP3FilesInDirectory(output_path) {
   }
 }
 
-// joinAllMP3FilesInDirectory(2);
+// joinAllMP3FilesInDirectory("./Audio/Shadow/Prologue.mp3");
 
 export default joinAllMP3FilesInDirectory
