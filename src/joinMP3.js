@@ -23,7 +23,7 @@ async function joinMP3(inputFiles, outputFile, callback) {
     }
     console.log(`Successfully joined MP3 files. Output file: ${outputFile}.mp3`);
   });
-  success()
+  // success()
   callback()
 }
 
@@ -52,6 +52,6 @@ async function joinAllMP3FilesInDirectory(output_path) {
   }
 }
 
-// joinAllMP3FilesInDirectory("./Audio/Shadow/Prologue.mp3");
+joinAllMP3FilesInDirectory("./Audio/Shadow/Chapter2.mp3");
 
 export default joinAllMP3FilesInDirectory
